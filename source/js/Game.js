@@ -24,6 +24,8 @@ class Game {
         this.starRating = this.gridSize;
         this.setScoringModel();
         this.moveInProcess = false;
+        this.firstCard = null;
+        this.currentFlippedCards = 0;
     }
 
     setScoringModel() {
@@ -38,27 +40,45 @@ class Game {
     }
 
     processMove(e) {
+        const clickedCard = e.currentTarget;
+        const cardIcon = $(clickedCard).data('card');
+
+        // only flip the card if there are not 2 already flipped.
+        if (this.currentFlippedCards < 2) {
+            console.log(this.currentFlippedCards);
+            $(clickedCard).toggleClass('flipped');
+            this.currentFlippedCards++;
+        }
+
         if (this.moveInProcess) {
-            this.checkMove(e);
+            console.log(this.firstCard);
+            if (this.firstCard === cardIcon) {
+                console.log('valid match');
+                this.processValidMatch();
+            } else {
+                console.log('invalid match');
+                this.processInvalidMatch();
+            }
+            this.finalizeMove();
         } else {
             this.moveInProcess = true;
-            // TODO: 
-            // 1. set this.firstPick = clicked Card
+            this.firstCard = cardIcon;
         }
     }
 
-    checkMove(e) {
-        // TODO: 
-        // CHECK TO SEE IF CARDS MATCH
-    }
-
     processValidMatch() {
-        // TODO:
-        // PROCESS A VALID MATCH
+        $('.flipped').addClass('found').removeAttr('data-clickable').toggleClass('flipped');
     }
 
     processInvalidMatch() {
-        // TODO: 
-        // PROCESS AN INVALID MATCH
+        console.log('process invalid match');
+        $('.flipped').removeClass('flipped');
+    }
+
+    finalizeMove() {
+        this.moves++;
+        this.firstCard = null;
+        this.moveInProcess = false;
+        this.currentFlippedCards = 0;
     }
 }

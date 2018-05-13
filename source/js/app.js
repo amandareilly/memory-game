@@ -3,15 +3,12 @@
 function gameLoop() {
     const game = new Game();
     game.start();
-    startClickListener();
+    startClickListener(game);
 }
 
-function startClickListener() {
+function startClickListener(game) {
     $('main').on('click', '[data-clickable]', function(e) {
-        console.log(e);
-        console.log(e.currentTarget);
-
-        $(e.currentTarget).toggleClass('flipped');
+        game.processMove(e);
     });
 }
 
