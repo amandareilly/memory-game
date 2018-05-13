@@ -1,26 +1,43 @@
 header {
-    max-height: 20vh;
+    max-height: 15vh;
+}
+
+footer {
+    max-height: 15vh
+}
+
+main {
+    max-height: 70vh;
 }
 
 .game-board {
     display: grid;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    max-height: 80vmin;
-    max-width: 80vmin;
+    grid-column-gap: 2vmin;
+    grid-row-gap: 2vmin;
+    max-height: 70vmin;
+    max-width: 70vmin;
     margin: 10px auto;
 }
 
 .grid-size-4 {
     grid-template-columns: repeat(4, 1fr);
+    .material-icons {
+        font-size: 10vmin;
+    }
 }
 
 .grid-size-6 {
     grid-template-columns: repeat(6, 1fr);
+    .material-icons {
+        font-size: 8vmin;
+    }
 }
 
 .grid-size-8 {
     grid-template-columns: repeat(8, 1fr);
+    .material-icons {
+        font-size: 6vmin;
+    }
 }
 
 .material-icons {
@@ -29,7 +46,6 @@ header {
     left: 0;
     bottom: 0;
     right: 0;
-    font-size: 10vmin;
     color: #FFF;
     display: flex;
     justify-content: center;
@@ -56,4 +72,8 @@ header {
 .found {
     background-color: gray;
     border: 3px solid gray;
+}
+
+.hidden {
+    display: none;
 }

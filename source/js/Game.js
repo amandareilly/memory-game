@@ -43,6 +43,7 @@ class Game {
 
     start() {
         this.renderer.render('main', 'gameBoard', this);
+        $('header').removeClass('hidden');
         this.drawScoreboard();
         this.timer.start();
     }

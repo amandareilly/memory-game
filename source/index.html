@@ -6,21 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/materialize.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <title>Document</title>
 </head>
 
 <body>
-    <header class="container">
+    <header class="container hidden">
         <div id="timer">
         </div>
         <div id="star-rating">
         </div>
         <div id="move-counter">
         </div>
-        <button type="reset" data-clickable-reset>Restart Game</button>
+        <button type="reset" data-clickable-reset class="btn btn-large blue-darken-3">Restart Game</button>
     </header>
-    <main class="container"></main>
+    <main class="container">
+        <h1>Memory</h1>
+        <p>Match the card pairs successfully to win.</p>
+        <h2>Select Your Difficulty</h2>
+        <button type="submit" data-clickable-difficulty="easy" class="btn btn-large green">Easy</button>
+        <button type="submit" data-clickable-difficulty="medium" class="btn btn-large yellow black-text">Medium</button>
+        <button type="submit" data-clickable-difficulty="hard" class="btn btn-large red">Hard</button>
+    </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
