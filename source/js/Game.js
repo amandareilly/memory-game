@@ -21,21 +21,23 @@ class Game {
         this.moves = 0;
         this.matchesRemaining = this.deck.numMatches;
         this.matchesFound = 0;
-        this.starRating = this.gridSize;
+        this.maxStarRating = this.gridSize;
         this.setScoringModel();
+        this.currentStarRating = this.maxStarRating;
+        this.excessMoves = 0;
         this.moveInProcess = false;
         this.firstCard = null;
         this.currentFlippedCards = 0;
     }
 
     setScoringModel() {
-        this.starLossThreshold = (this.gridSize * this.gridSize) / 2;
+        this.starLossThreshold = ((this.gridSize * this.gridSize) / 2) + 1;
         this.starLossInterval = this.gridSize / 2;
     }
 
     start() {
         this.renderer.render('main', 'gameBoard', this);
-        // TODO: render score board
+        this.drawScoreboard();
         this.timer.start();
     }
 
@@ -77,8 +79,45 @@ class Game {
 
     finalizeMove() {
         this.moves++;
+        this.excessMoves++;
         this.firstCard = null;
         this.moveInProcess = false;
         this.currentFlippedCards = 0;
+        this.calculateStarRating();
+        this.drawScoreboard();
+    }
+
+    drawScoreboard() {
+        $('#star-rating').html(`Star Rating: ${this.currentStarRating}`);
+        $('#move-counter').html(`Moves: ${this.moves}`);
+    }
+
+    visualizeStarRating() {
+
+    }
+
+    calculateStarRating() {
+        if (this.moves < this.starLossThreshold || this.currentStarRating === 1) {
+            // has not yet lost any stars
+            // or is already at the minimum star rating
+            console.log('return from calculate');
+            console.log(this.starLossThreshold);
+            console.log(this.currentStarRating);
+            return;
+        }
+
+        if (this.currentStarRating === this.maxStarRating && this.excessMoves === this.starLossThreshold) {
+            // losting first star
+            console.log('hit if');
+            this.currentStarRating--;
+            this.excessMoves = 0;
+        } else if (this.excessMoves === this.starLossInterval) {
+            console.log('hit else if');
+            this.currentStarRating--;
+            this.excessMoves = 0;
+        } else {
+            console.log(this.excessMoves);
+            console.log('hit else');
+        }
     }
 }
