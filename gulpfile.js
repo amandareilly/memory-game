@@ -74,7 +74,7 @@ gulp.task('compile-templates', function() {
 });
 
 gulp.task('build-js', function() {
-    return gulp.src('source/js/classes/*.js')
+    return gulp.src('source/js/support-classes/*.js')
         .pipe(addsrc.append('source/js/templates/*.js'))
         .pipe(addsrc.append('source/js/*.js'))
         .pipe(sourcemaps.init())
