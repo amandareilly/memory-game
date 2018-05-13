@@ -1,8 +1,18 @@
 'use strict';
 
-$('main').on('click', '[data-clickable]', function(e) {
-    console.log(e);
-    console.log(e.currentTarget);
+function gameLoop() {
+    const game = new Game();
+    game.start();
+    startClickListener();
+}
 
-    $(e.currentTarget).toggleClass('flipped');
-})
+function startClickListener() {
+    $('main').on('click', '[data-clickable]', function(e) {
+        console.log(e);
+        console.log(e.currentTarget);
+
+        $(e.currentTarget).toggleClass('flipped');
+    });
+}
+
+$(gameLoop);

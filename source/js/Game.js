@@ -62,6 +62,3 @@ class Game {
         // PROCESS AN INVALID MATCH
     }
 }
-
-const game = new Game();
-game.start();
