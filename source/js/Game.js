@@ -17,6 +17,7 @@ class Game {
         }
         this.gridSize = gridSize;
         this.timer = new Timer();
+        this.renderer = new Renderer();
         this.moves = 0;
         this.matchesRemaining = this.deck.numMatches;
         this.matchesFound = 0;
@@ -31,7 +32,7 @@ class Game {
     }
 
     start() {
-        // TODO: render game board
+        this.renderer.render('main', 'gameBoard', this);
         // TODO: render score board
         this.timer.start();
     }
@@ -63,3 +64,4 @@ class Game {
 }
 
 const game = new Game();
+game.start();
