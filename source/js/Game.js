@@ -31,6 +31,7 @@ class Game {
         this.matchesRemaining = this.deck.numMatches;
         this.moveInProcess = false;
         this.firstCard = null;
+        this.currentFlippedCards = 0;
     }
 
     start() {
@@ -56,7 +57,16 @@ class Game {
             return;
         }
 
+        // if there are already 2 flipped cards, do nothing
+        // handles the case where a 3rd card is clicked while
+        // animations are happening (using setTimeout);
+        if (this.currentFlippedCards === 2) {
+            console.log('exiting - two cards already flipped');
+            return;
+        }
+
         $(clickedCard).addClass('flipped');
+        this.currentFlippedCards++;
 
         setTimeout($.proxy(function() {
             if (this.moveInProcess) {
@@ -65,7 +75,6 @@ class Game {
                 } else {
                     this.processInvalidMatch();
                 }
-                this.finalizeMove();
             } else {
                 this.moveInProcess = true;
                 this.firstCard = cardIcon;
@@ -75,24 +84,37 @@ class Game {
     }
 
     processValidMatch() {
-        $('.flipped').addClass('found').removeAttr('data-clickable').toggleClass('flipped');
+        const foundCard = $('.flipped').parent().html();
+
+        $('.found-card').html(foundCard).removeClass('hidden');
+        setTimeout(function() {
+            $('.card-container>.flipped').addClass('found').removeAttr('data-clickable').removeClass('flipped');
+        }, 800);
+        setTimeout(function() {
+            $('.found-card').empty().addClass('hidden');
+        }, 1800);
         this.matchesRemaining--;
+        this.finalizeMove();
     }
 
     processInvalidMatch() {
         $('.flipped').parent().addClass('wrong');
         setTimeout(function() {
             $('.flipped').parent().removeClass('wrong');
-        }, 1000);
+        }, 500);
         setTimeout(function() {
             $('.flipped').removeClass('flipped');
-        }, 1500);
+        }, 600);
+        setTimeout($.proxy(function() {
+            this.finalizeMove();
+        }, this), 700);
     }
 
     finalizeMove() {
         this.moves++;
         this.firstCard = null;
         this.moveInProcess = false;
+        this.currentFlippedCards = 0;
         this.drawScoreboard();
         this.checkForWin();
     }

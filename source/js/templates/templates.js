@@ -18,5 +18,5 @@ Handlebars.registerPartial("gameBoard", Handlebars.template({"1":function(contai
     + container.escapeExpression(((helper = (helper = helpers.gridSize || (depth0 != null ? depth0.gridSize : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"gridSize","hash":{},"data":data}) : helper)))
     + "\" data-js-click-container=\"js-click-container\">\r\n"
     + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.deck : depth0)) != null ? stack1.deck : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div>";
+    + "    <div class=\"found-card hidden\"></div>\r\n</div>";
 },"usePartial":true,"useData":true}));
