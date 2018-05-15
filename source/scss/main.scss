@@ -3,6 +3,20 @@ header {
     width: 70vmin;
     margin: 0 auto;
     padding: 5vh;
+    overflow: hidden;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-container.stacked {
+    flex-direction: column;
+    align-items: center;
 }
 
 main {
@@ -83,4 +97,30 @@ main {
 
 .hidden {
     display: none;
+}
+
+#star-rating {
+    position: relative;
+    height: 3rem;
+    width: 24rem;
+    display: flex;
+    .empty-stars,
+    .filled-stars {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        .material-icons {
+            position: relative;
+            color: #000;
+            font-size: 3rem;
+        }
+    }
+    .filled-stars>.material-icons {
+        color: yellow;
+    }
+    .filled-stars>.material-icons.unfilled {
+        color: #FFF;
+    }
 }

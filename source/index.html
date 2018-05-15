@@ -13,13 +13,19 @@
 
 <body>
     <header class="container hidden">
-        <div id="timer">
+        <div class="header-container stacked">
+            <div id="timer">
+            </div>
+            <div id="star-rating">
+                <div class="filled-stars"></div>
+                <div class="empty-stars"></div>
+            </div>
         </div>
-        <div id="star-rating">
+        <div class="header-container">
+            <div id="move-counter">
+            </div>
+            <button type="reset" data-clickable-reset class="btn btn-large blue-darken-3">Restart Game</button>
         </div>
-        <div id="move-counter">
-        </div>
-        <button type="reset" data-clickable-reset class="btn btn-large blue-darken-3">Restart Game</button>
     </header>
     <main class="container">
         <h1>Memory</h1>

@@ -103,12 +103,31 @@ class Game {
     }
 
     drawScoreboard() {
-        $('#star-rating').html(`Star Rating: ${this.currentStarRating}`);
+        const stars = this.visualizeStarRating();
+        console.log(stars);
+        console.log(stars.empty);
+        console.log(stars.filled);
+        $('.empty-stars').html(stars.empty);
+        $('.filled-stars').html(stars.filled);
         $('#move-counter').html(`Moves: ${this.moves}`);
     }
 
     visualizeStarRating() {
+        let emptyStars = "";
+        let filledStars = "";
 
+        for (let i = 0; i < this.maxStarRating; i++) {
+            emptyStars += '<i class="material-icons">star_border</i>';
+        }
+        for (let i = 0; i < this.maxStarRating; i++) {
+            if (i < this.currentStarRating) {
+                filledStars += '<i class="material-icons">star</i>';
+            } else {
+                filledStars += '<i class="material-icons unfilled">star</i>';
+            }
+        }
+
+        return { empty: emptyStars, filled: filledStars };
     }
 
     calculateStarRating() {
