@@ -58,17 +58,20 @@ class Game {
 
         $(clickedCard).addClass('flipped');
 
-        if (this.moveInProcess) {
-            if (this.firstCard === cardIcon) {
-                this.processValidMatch();
+        setTimeout($.proxy(function() {
+            if (this.moveInProcess) {
+                if (this.firstCard === cardIcon) {
+                    this.processValidMatch();
+                } else {
+                    this.processInvalidMatch();
+                }
+                this.finalizeMove();
             } else {
-                this.processInvalidMatch();
+                this.moveInProcess = true;
+                this.firstCard = cardIcon;
             }
-            this.finalizeMove();
-        } else {
-            this.moveInProcess = true;
-            this.firstCard = cardIcon;
-        }
+        }, this), 1500);
+
     }
 
     processValidMatch() {
@@ -77,7 +80,13 @@ class Game {
     }
 
     processInvalidMatch() {
-        $('.flipped').removeClass('flipped');
+        $('.flipped').parent().addClass('wrong');
+        setTimeout(function() {
+            $('.flipped').parent().removeClass('wrong');
+        }, 1000);
+        setTimeout(function() {
+            $('.flipped').removeClass('flipped');
+        }, 1500);
     }
 
     finalizeMove() {
