@@ -1,11 +1,11 @@
 Handlebars.registerPartial("card", Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<div class=\"card front\" data-card=\""
+  return "<div class=\"card-container\">\r\n    <div class=\"card\" data-card=\""
     + alias2(alias1((depth0 != null ? depth0.cardIcon : depth0), depth0))
-    + "\" data-clickable>\r\n    <i class=\"material-icons\">"
+    + "\" data-clickable>\r\n        <div class=\"card-side card-back blue darken-3\">\r\n            <i class=\"material-icons\">help</i>\r\n        </div>\r\n        <div class=\"card-side card-front blue lighten-1\">\r\n            <i class=\"material-icons\">"
     + alias2(alias1((depth0 != null ? depth0.cardIcon : depth0), depth0))
-    + "</i>\r\n</div> ";
+    + "</i>\r\n        </div>\r\n    </div>\r\n</div>";
 },"useData":true}));
 Handlebars.registerPartial("gameBoard", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;

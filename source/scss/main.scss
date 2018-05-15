@@ -79,17 +79,15 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: purple;
     border: 3px solid #000;
     border-radius: 10px;
     position: relative;
     margin: 0;
 }
 
-.flipped {
-    border: 10px solid green;
-}
-
+// .flipped {
+//     border: 10px solid green;
+// }
 .found {
     background-color: gray;
     border: 3px solid gray;
@@ -123,4 +121,34 @@ main {
     .filled-stars>.material-icons.unfilled {
         color: #FFF;
     }
+}
+
+// Card Flip Effect
+.card-container {
+    width: 100%;
+    height: 100%;
+    perspective: 600px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.card-side {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.flipped {
+    transform: rotateY(180deg);
 }
