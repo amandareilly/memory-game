@@ -59,12 +59,9 @@ class Game {
         $(clickedCard).addClass('flipped');
 
         if (this.moveInProcess) {
-            console.log(this.firstCard);
             if (this.firstCard === cardIcon) {
-                console.log('valid match');
                 this.processValidMatch();
             } else {
-                console.log('invalid match');
                 this.processInvalidMatch();
             }
             this.finalizeMove();
@@ -80,7 +77,6 @@ class Game {
     }
 
     processInvalidMatch() {
-        console.log('process invalid match');
         $('.flipped').removeClass('flipped');
     }
 
@@ -94,9 +90,6 @@ class Game {
 
     drawScoreboard() {
         const stars = this.rating.visualizeStarRating(this.moves);
-        console.log(stars);
-        console.log(stars.empty);
-        console.log(stars.filled);
         $('.empty-stars').html(stars.empty);
         $('.filled-stars').html(stars.filled);
         $('#move-counter').html(`Moves: ${this.moves}`);
