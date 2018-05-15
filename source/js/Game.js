@@ -26,19 +26,11 @@ class Game {
         this.gridSize = gridSize;
         this.timer = new Timer();
         this.renderer = new Renderer();
+        this.rating = new StarRating(gridSize);
         this.moves = 0;
         this.matchesRemaining = this.deck.numMatches;
-        this.maxStarRating = this.gridSize;
-        this.setScoringModel();
-        this.currentStarRating = this.maxStarRating;
-        this.excessMoves = 0;
         this.moveInProcess = false;
         this.firstCard = null;
-    }
-
-    setScoringModel() {
-        this.starLossThreshold = ((this.gridSize * this.gridSize) / 2) + 3;
-        this.starLossInterval = this.gridSize / 2;
     }
 
     start() {
@@ -94,65 +86,20 @@ class Game {
 
     finalizeMove() {
         this.moves++;
-        this.excessMoves++;
         this.firstCard = null;
         this.moveInProcess = false;
-        this.calculateStarRating();
         this.drawScoreboard();
         this.checkForWin();
     }
 
     drawScoreboard() {
-        const stars = this.visualizeStarRating();
+        const stars = this.rating.visualizeStarRating(this.moves);
         console.log(stars);
         console.log(stars.empty);
         console.log(stars.filled);
         $('.empty-stars').html(stars.empty);
         $('.filled-stars').html(stars.filled);
         $('#move-counter').html(`Moves: ${this.moves}`);
-    }
-
-    visualizeStarRating() {
-        let emptyStars = "";
-        let filledStars = "";
-
-        for (let i = 0; i < this.maxStarRating; i++) {
-            emptyStars += '<i class="material-icons">star_border</i>';
-        }
-        for (let i = 0; i < this.maxStarRating; i++) {
-            if (i < this.currentStarRating) {
-                filledStars += '<i class="material-icons">star</i>';
-            } else {
-                filledStars += '<i class="material-icons unfilled">star</i>';
-            }
-        }
-
-        return { empty: emptyStars, filled: filledStars };
-    }
-
-    calculateStarRating() {
-        if (this.moves < this.starLossThreshold || this.currentStarRating === 1) {
-            // has not yet lost any stars
-            // or is already at the minimum star rating
-            console.log('return from calculate');
-            console.log(this.starLossThreshold);
-            console.log(this.currentStarRating);
-            return;
-        }
-
-        if (this.currentStarRating === this.maxStarRating && this.excessMoves === this.starLossThreshold) {
-            // losting first star
-            console.log('hit if');
-            this.currentStarRating--;
-            this.excessMoves = 0;
-        } else if (this.excessMoves === this.starLossInterval) {
-            console.log('hit else if');
-            this.currentStarRating--;
-            this.excessMoves = 0;
-        } else {
-            console.log(this.excessMoves);
-            console.log('hit else');
-        }
     }
 
     checkForWin() {
