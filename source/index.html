@@ -24,16 +24,21 @@
         <div class="header-container">
             <div id="move-counter">
             </div>
-            <button type="reset" data-clickable-reset class="btn btn-large blue-darken-3">Restart Game</button>
+            <div class="button-container">
+                <button type="reset" data-clickable-reset class="btn btn-large blue darken-3">Restart Game</button>
+                <button type="submit" data-clickable-new-game class="btn btn-large yellow darken-4">Select New Difficulty</button>
+            </div>
         </div>
     </header>
     <main class="container">
-        <h1>Memory</h1>
-        <p>Match the card pairs successfully to win.</p>
-        <h2>Select Your Difficulty</h2>
-        <button type="submit" data-clickable-difficulty="easy" class="btn btn-large green">Easy</button>
-        <button type="submit" data-clickable-difficulty="medium" class="btn btn-large yellow black-text">Medium</button>
-        <button type="submit" data-clickable-difficulty="hard" class="btn btn-large red">Hard</button>
+        <div class="home-main">
+            <h1>Memory</h1>
+            <p>Match the card pairs successfully to win.</p>
+            <h2>Select Your Difficulty</h2>
+            <button type="submit" data-clickable-difficulty="easy" class="btn btn-large green">Easy</button>
+            <button type="submit" data-clickable-difficulty="medium" class="btn btn-large yellow black-text">Medium</button>
+            <button type="submit" data-clickable-difficulty="hard" class="btn btn-large red">Hard</button>
+        </div>
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>

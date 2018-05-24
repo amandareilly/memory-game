@@ -131,7 +131,13 @@ class Game {
             // win
             this.timer.stop();
             // TODO: 
-            // win modal
+            $('header').addClass('hidden');
+            $('.win-modal').removeClass('hidden');
+            $('[data-stat-time]').html(this.timer.elapsedTime);
+            $('[data-stat-moves]').html(this.moves);
+            const stars = this.rating.visualizeStarRating(this.moves);
+            $('.empty-stars').html(stars.empty);
+            $('.filled-stars').html(stars.filled);
         }
     }
 }

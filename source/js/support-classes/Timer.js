@@ -36,7 +36,7 @@ class Timer {
         }
         const element = document.querySelector(this.selector);
         element.innerHTML = timeString;
-        // this.t = setTimeout(this.updateTime.bind(this), 500);
+        this.elapsedTime = timeString;
     }
 
     padTimeValue(val) {

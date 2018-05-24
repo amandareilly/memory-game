@@ -32,6 +32,10 @@ function startClickListeners(game) {
     $('header').on('click', '[data-clickable-reset]', function(e) {
         game.restart();
     });
+
+    $('header').on('click', '[data-clickable-new-game]', function(e) {
+        location.reload();
+    });
 }
 
 $(gameReady);

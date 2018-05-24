@@ -1,9 +1,9 @@
 class StarRating {
     constructor(gridSize) {
-        this.starLossThreshold = ((gridSize * gridSize) / 2) + 3;
+        this.starLossThreshold = ((gridSize * gridSize) / 2) + (gridSize / 2);
         this.starLossInterval = gridSize / 2;
-        this.maxStarRating = gridSize;
-        this.currentStarRating = gridSize;
+        this.maxStarRating = Math.max(3, gridSize / 2);
+        this.currentStarRating = this.maxStarRating;
         this.excessMoves = 0;
     }
 

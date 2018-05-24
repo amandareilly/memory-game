@@ -3,4 +3,22 @@
         {{>card}}
     {{/each}}
     <div class="found-card hidden"></div>
+    <div class="win-modal hidden">
+        <h2>Congratulations!</h2>
+        <div id="star-rating-final">
+            <div class="filled-stars"></div>
+            <div class="empty-stars"></div>
+        </div>
+        <p class="stat"><span class="stat-label">Time: </span><span class="stat-data" data-stat-time></span></p>
+        <p class="stat">
+            <span class="stat-label">Moves:</span>
+            <span class="stat-data" data-stat-moves></span>
+        </p>
+        <div class="new-game">
+            <h2>Start a New Game</h2>
+            <button type="submit" data-clickable-difficulty="easy" class="btn btn-large green">Easy</button>
+            <button type="submit" data-clickable-difficulty="medium" class="btn btn-large yellow black-text">Medium</button>
+            <button type="submit" data-clickable-difficulty="hard" class="btn btn-large red">Hard</button>
+        </div>
+    </div>
 </div>
