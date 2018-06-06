@@ -1,5 +1,7 @@
 body {
     padding: 5vmin 0;
+    box-sizing: border-box;
+    min-height: 100%;
 }
 
 header {
@@ -15,6 +17,7 @@ header {
 
 h2 {
     font-size: 2.5rem;
+    text-align: center;
 }
 
 .header-container {
@@ -46,12 +49,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .btn {
-        width: 75%;
-        margin-bottom: 5px;
-        height: 36px;
-        line-height: 36px;
-        padding: 0 16px;
+    .difficulty-container {
+        width: 100%;
+        .btn {
+            width: 75%;
+            margin: 0 12.5% 5px;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+        }
     }
 }
 
@@ -276,4 +282,110 @@ main {
 
 .win-modal.hidden {
     display: none;
+}
+
+.win-modal {
+    position: fixed;
+    width: 91vw;
+    height: 91vh;
+    left: 4.5vw;
+    top: 4.5vh;
+}
+
+#star-rating-final {
+    min-height: 3rem;
+    margin-bottom: .25rem;
+    max-width: 85vw;
+}
+
+// media queries
+@media only screen and (max-width: 400px) {
+    .new-game {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .btn {
+            width: 100%;
+            margin-bottom: 5px;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+        }
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+    header {
+        min-height: 40vh;
+        font-size: 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #star-rating {
+        max-width: 60vw;
+    }
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: landscape) {
+    body {
+        display: flex;
+        height: 94vh;
+        width: 94vw;
+        margin: 3vh 3vw;
+        padding: 3vh 3vw;
+    }
+    header,
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        min-height: 94vh;
+        width: 45.5vw;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        margin-right: 3vw;
+    }
+    h1,
+    h2 {
+        margin: 1rem 0;
+    }
+    .home-main {
+        p {
+            margin: 0;
+        }
+    }
+    .game-board {
+        margin: auto;
+    }
+    #star-rating {
+        max-width: 45.5vw;
+        .empty-stars,
+        .filled-stars {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #000;
+        }
+    }
+    .header-container {
+        width: 45.5vw;
+        flex-direction: column;
+        #move-counter {
+            text-align: center;
+            padding-top: 10px;
+        }
+    }
 }
