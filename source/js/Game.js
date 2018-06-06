@@ -60,6 +60,7 @@ class Game {
         // handles the case where a 3rd card is clicked while
         // animations are happening (using setTimeout);
         if (this.currentFlippedCards === 2) {
+            console.log("2 cards already flipped");
             return;
         }
 
@@ -91,6 +92,9 @@ class Game {
         setTimeout(function() {
             $('.found-card').empty().addClass('hidden');
         }, 1800);
+        setTimeout($.proxy(function() {
+            this.currentFlippedCards = 0;
+        }, this), 1805);
         this.matchesRemaining--;
         this.finalizeMove();
     }
@@ -106,13 +110,15 @@ class Game {
         setTimeout($.proxy(function() {
             this.finalizeMove();
         }, this), 700);
+        setTimeout($.proxy(function() {
+            this.currentFlippedCards = 0;
+        }, this), 700);
     }
 
     finalizeMove() {
         this.moves++;
         this.firstCard = null;
         this.moveInProcess = false;
-        this.currentFlippedCards = 0;
         this.drawScoreboard();
         this.checkForWin();
     }
