@@ -1,6 +1,6 @@
 # Memory Game
 
-This is a JavaScript implementation of the classis childrens' "Memory Game".  Players have a grid of cards and must match the cards up by flipping one pair at a time.
+This is a JavaScript implementation of the classic childrens' "Memory Game".  Players have a grid of cards and must match the cards up by flipping one pair at a time.  This implementation is completely responsive and playable in all modern browsers and devices.
 
 ## Running The Game
 To run on your own machine, clone the repo and then visit [your-directory]/public/index.html to start the game.
