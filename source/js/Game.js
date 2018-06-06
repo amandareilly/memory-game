@@ -41,9 +41,9 @@ class Game {
         this.timer.start();
     }
 
-    restart() {
+    restart(gridSize = this.gridSize) {
         this.timer.stop();
-        this.initialize(this.gridSize);
+        this.initialize(gridSize);
         this.start();
     }
 
@@ -53,7 +53,6 @@ class Game {
 
         // if this class is already flipped, do nothing
         if ($(clickedCard).hasClass('flipped')) {
-            console.log('exiting - card is already flipped');
             return;
         }
 
@@ -61,7 +60,6 @@ class Game {
         // handles the case where a 3rd card is clicked while
         // animations are happening (using setTimeout);
         if (this.currentFlippedCards === 2) {
-            console.log('exiting - two cards already flipped');
             return;
         }
 
